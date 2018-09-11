@@ -231,7 +231,7 @@
 <p>This class implements all data communication methods with server. We use <a href="https://firebase.google.cn/">Firebase</a>
 as our backend provider.
 In this project, we provide full backend supports, and can make some adjustments according to your frontend
-development needs. Our demands are for you to handle all UI events, send request to server,
+development needs. We ask you to handle all UI events, send request to server,
 and respond to listened events, etc. For example:</p>
 
 <ul>
@@ -269,7 +269,7 @@ and respond to listened events, etc. For example:</p>
     <span class="n">Server</span><span class="p">.</span><span class="nf">SignIn</span><span class="p">(</span><span class="n">SignInEventHandler</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">);</span>
   <span class="p">}</span>
 </code></pre>
-<p>Use method <code>Server.SignIn</code> to send a asynchronous sign-in request to server.</p>
+<p>Use method <code>Server.SignIn</code> to send an asynchronous sign-in request to server.</p>
 
 <table><thead>
 <tr>
@@ -326,7 +326,7 @@ and respond to listened events, etc. For example:</p>
     <span class="n">Server</span><span class="p">.</span><span class="nf">ListenGameState</span><span class="p">(</span><span class="n">GameStateHandler</span><span class="p">,</span> <span class="n">uid</span><span class="p">);</span>
   <span class="p">}</span>
 </code></pre>
-<p>When user is in game, the client should listen to database events, and the UI should
+<p>When user is in game, the client should listen to game events, and the UI should
 respond to these events accordingly. Use <code>Server.ListenGameState</code> to listen.</p>
 
 <table><thead>
@@ -339,7 +339,7 @@ respond to these events accordingly. Use <code>Server.ListenGameState</code> to 
 <tr>
 <td>handler</td>
 <td>void</td>
-<td>The handler of game events.<br>Triggered every time the server game state changed.</td>
+<td>The handler of game events.<br>Triggered every time the server game state changes.</td>
 </tr>
 <tr>
 <td>uid</td>
