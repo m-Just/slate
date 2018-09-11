@@ -1,10 +1,12 @@
 # class *Server*
 ## Introduction
-This class implements all data communication methods with server. We use [Firebase](https://firebase.google.cn/)
-as our backend provider.
-In this project, we provide full backend supports, and can make some adjustments according to your frontend
-development needs. We ask you to handle all UI events, send request to server,
-and respond to listened events, etc. For example:
+This class implements all data communication methods with server.
+We use [Firebase](https://firebase.google.cn/) as our backend provider.
+In this project, we provide full backend support and a fully functional running server for debugging.
+We can also make some adjustments according to your frontend development needs if the requests are reasonable.
+Your job is to design a user-friendly responsive UI and handle all its events,
+such as sending request to server, and responding to listened events, etc.
+For instance:
 
   * Show a message to user if he typed any invalid character in password input field.
   * Create UI buttons, listen on click events and send corresponding requests to server, then handle the server's response.
