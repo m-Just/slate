@@ -99,4 +99,4 @@ uid       | string | The uid obtained on user sign-in.
 
 #### Returns:
 
-  * `bool status`: if the listener has been successfully started
+  * `bool status`: if the listener has started successfully
