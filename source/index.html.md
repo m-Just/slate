@@ -67,9 +67,12 @@ password | string | The password of the user.<br>Should satisfy the following ru
   * `bool approved`: if the sign-in request has been approved
   * `string uid`: a unique ID for this user
 
-#### Returns
+#### Returns:
 
   * void
+
+#### Notes:
+The user's sign-in status is persistent. Only call `SignIn` again if `SignOut` has been called.
 
 ### Scenario \#2 - Game State Listening
 
