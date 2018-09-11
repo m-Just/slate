@@ -4,7 +4,7 @@ This class implements all data communication methods with server.
 We use [Firebase](https://firebase.google.cn/) as our backend provider.
 In this project, we provide full backend support and a fully functional running server for debugging.
 We can also make some adjustments according to your frontend development needs if the requests are reasonable.
-To start with, we will package this class with some code samples as an unity project to you.
+To start with, we will package this class and its dependent SDK with some code samples as an unity project to you.
 Your job is to design a user-friendly responsive UI and handle all its events,
 such as sending request to server, and responding to listened events, etc.
 For instance:
@@ -12,6 +12,15 @@ For instance:
   * Show a message to user if he typed any invalid character in password input field.
   * Create UI buttons, listen on click events and send corresponding requests to server, then handle the server's response.
   * Listen on messages from the server, and show them to the user once the event is triggered.
+
+If you should encounter any problem using this class, feel free to contact me on WeChat;
+or if you had any trouble when building for deployments on iOS and Andriod, please refer to
+[Firebase Setup](https://firebase.google.com/docs/unity/setup?hl=zh-cn) first.
+
+#### Note:
+Because our backend uses Google Service API, you may need to use VPN while debugging;
+in the meantime, we are also trying to set up a proxy server so that you can access the
+server directly without VPN.
 
 ## Examples
 Here are some examples on using class *Server* to communicate with the server.
