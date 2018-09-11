@@ -92,7 +92,7 @@ Parameter | Type | Description
 handler   | void | The handler of game events.<br>Triggered every time the server game state changes.
 uid       | string | The uid obtained on user sign-in.
 
-#### Response field (parameters passed to the handler):
+#### Response fields (parameters passed to the handler):
 
   * `uint pot_size`: the size of the pot
   * other information such as flop card value and current player id
