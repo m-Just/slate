@@ -50,7 +50,7 @@ handler  | void   | A function for handling the asynchronous response.
 username | string | The username of the user.<br>Should be a valid phone number with country code.<br>For example, if a Chinese user's phone number is 138xxxxxxxx then the string value should be `+86138xxxxxxxx`.
 password | string | The password of the user.<br>Should satisfy the following rules:<br><ul><li>a minimum of 6 characters required</li><li>no more than 15 characters</li><li>a-z, A-Z, 0-9 allowed</li><li>special characters allowed <code>~`!@#$%^&*()-_+=&#124;}]{["':;?/>.<,</code></li><li>white space allowed</li></ul>
 
-#### Respond (parameters passed to the handler):
+#### Responds (parameters passed to the handler):
 
   * `bool approved`: if the sign-in request has been approved
   * `string uid`: a unique ID for this user
@@ -92,7 +92,7 @@ Parameter | Type | Description
 handler   | void | The handler of game events.<br>Triggered every time the server game state changed.
 uid       | string | The uid obtained on user sign-in.
 
-#### Respond (parameters passed to the handler):
+#### Responds (parameters passed to the handler):
 
   * `uint pot_size`: the size of the pot
   * other information such as flop card value and current player id
