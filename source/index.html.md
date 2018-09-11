@@ -1,7 +1,8 @@
 # class *Server*
 ## Introduction
 This class implements all data communication methods with server. We use [Firebase](https://firebase.google.cn/)
-as our backend provider. We provide full backend supports, and can make minor adjustment according to your frontend
+as our backend provider.
+In this project, we provide full backend supports, and can make minor adjustment according to your frontend
 development needs. You should handle all UI events, sending request to server,
 and respond to listened events, etc. For example:
 
