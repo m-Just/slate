@@ -246,10 +246,12 @@ For instance:</p>
 <p>If you should encounter any problem using this class, feel free to contact me on WeChat;
 or if you had any trouble when building for deployments on iOS and Andriod, please refer to
 <a href="https://firebase.google.com/docs/unity/setup?hl=zh-cn">Firebase Setup</a> first.</p>
-<h4 id='note'>Note:</h4>
-<p>Because our backend uses Google Service API, you may need to use VPN while debugging;
+
+<aside class="notice">
+Because our backend uses Google Service API, you may need to use VPN while debugging;
 in the meantime, we are also trying to set up a proxy server so that you can access the
-server directly without VPN.</p>
+server directly without VPN.
+</aside>
 <h2 id='examples'>Examples</h2>
 <p>Here are some examples on using class <em>Server</em> to communicate with the server.</p>
 <h3 id='scenario-1-sign-in'>Scenario #1 - Sign In</h3>
@@ -314,8 +316,10 @@ server directly without VPN.</p>
 <ul>
 <li>void</li>
 </ul>
-<h4 id='notes'>Notes:</h4>
-<p>The user&#39;s sign-in status is persistent. Only call <code>SignIn</code> again if <code>SignOut</code> has been called.</p>
+
+<aside class="notice">
+The user's sign-in status is persistent. Only call `SignIn` again if `SignOut` has been called.
+</aside>
 <h3 id='scenario-2-game-state-listening'>Scenario #2 - Game State Listening</h3>
 <blockquote>
 <p>Sample code (Unity C#)</p>
