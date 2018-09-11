@@ -17,10 +17,11 @@ If you should encounter any problem using this class, feel free to contact me on
 or if you had any trouble when building for deployments on iOS and Andriod, please refer to
 [Firebase Setup](https://firebase.google.com/docs/unity/setup?hl=zh-cn) first.
 
-#### Note:
+<aside class="notice">
 Because our backend uses Google Service API, you may need to use VPN while debugging;
 in the meantime, we are also trying to set up a proxy server so that you can access the
 server directly without VPN.
+</aside>
 
 ## Examples
 Here are some examples on using class *Server* to communicate with the server.
@@ -71,8 +72,9 @@ password | string | The password of the user.<br>Should satisfy the following ru
 
   * void
 
-#### Notes:
+<aside class="notice">
 The user's sign-in status is persistent. Only call `SignIn` again if `SignOut` has been called.
+</aside>
 
 ### Scenario \#2 - Game State Listening
 
