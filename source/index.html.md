@@ -4,6 +4,7 @@ This class implements all data communication methods with server.
 We use [Firebase](https://firebase.google.cn/) as our backend provider.
 In this project, we provide full backend support and a fully functional running server for debugging.
 We can also make some adjustments according to your frontend development needs if the requests are reasonable.
+To start with, we will package this class with some code samples as an unity project to you.
 Your job is to design a user-friendly responsive UI and handle all its events,
 such as sending request to server, and responding to listened events, etc.
 For instance:
