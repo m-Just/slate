@@ -310,10 +310,12 @@ server directly without VPN.</p>
 <li><code>bool approved</code>: if the sign-in request has been approved</li>
 <li><code>string uid</code>: a unique ID for this user</li>
 </ul>
-<h4 id='returns'>Returns</h4>
+<h4 id='returns'>Returns:</h4>
 <ul>
 <li>void</li>
 </ul>
+<h4 id='notes'>Notes:</h4>
+<p>The user&#39;s sign-in status is persistent. Only call <code>SignIn</code> again if <code>SignOut</code> has been called.</p>
 <h3 id='scenario-2-game-state-listening'>Scenario #2 - Game State Listening</h3>
 <blockquote>
 <p>Sample code (Unity C#)</p>
