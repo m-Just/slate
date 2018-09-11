@@ -230,13 +230,13 @@
         <h1 id='class-server'>class <em>Server</em></h1><h2 id='introduction'>Introduction</h2>
 <p>This class implements all data communication methods with server. We use <a href="https://firebase.google.cn/">Firebase</a>
 as our backend provider.
-In this project, we provide full backend supports, and can make minor adjustment according to your frontend
-development needs. You should handle all UI events, sending request to server,
+In this project, we provide full backend supports, and can make some adjustments according to your frontend
+development needs. Our demands are for you to handle all UI events, send request to server,
 and respond to listened events, etc. For example:</p>
 
 <ul>
 <li>Show a message to user if he typed any invalid character in password input field.</li>
-<li>Create UI buttons, add listeners to them and send corresponding request to server, then handle the servers respond.</li>
+<li>Create UI buttons, listen on click events and send corresponding requests to server, then handle the server&#39;s response.</li>
 <li>Listen on messages from the server, and show them to the user once the event is triggered.</li>
 </ul>
 <h2 id='examples'>Examples</h2>
@@ -294,7 +294,7 @@ and respond to listened events, etc. For example:</p>
 <td>The password of the user.<br>Should satisfy the following rules:<br><ul><li>a minimum of 6 characters required</li><li>no more than 15 characters</li><li>a-z, A-Z, 0-9 allowed</li><li>special characters allowed <code>~`!@#$%^&amp;*()-_+=&#124;}]{[&quot;&#39;:;?/&gt;.&lt;,</code></li><li>white space allowed</li></ul></td>
 </tr>
 </tbody></table>
-<h4 id='responds-parameters-passed-to-the-handler'>Responds (parameters passed to the handler):</h4>
+<h4 id='response-fields-parameters-passed-to-the-handler'>Response fields (parameters passed to the handler):</h4>
 <ul>
 <li><code>bool approved</code>: if the sign-in request has been approved</li>
 <li><code>string uid</code>: a unique ID for this user</li>
@@ -347,7 +347,7 @@ respond to these events accordingly. Use <code>Server.ListenGameState</code> to 
 <td>The uid obtained on user sign-in.</td>
 </tr>
 </tbody></table>
-<h4 id='responds-parameters-passed-to-the-handler-2'>Responds (parameters passed to the handler):</h4>
+<h4 id='response-field-parameters-passed-to-the-handler'>Response field (parameters passed to the handler):</h4>
 <ul>
 <li><code>uint pot_size</code>: the size of the pot</li>
 <li>other information such as flop card value and current player id</li>
