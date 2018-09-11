@@ -1,239 +1,101 @@
----
-title: API Reference
+# class *Server*
+## Introduction
+This class implements all data communication methods with server. We use [Firebase](https://firebase.google.cn/)
+as our backend provider. We provide full backend supports, and can make minor adjustment according to your frontend
+development needs. You should handle all UI events, sending request to server,
+and respond to listened events, etc. For example:
 
-language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+  * Show a message to user if he typed any invalid character in password input field.
+  * Create UI buttons, add listeners to them and send corresponding request to server, then handle the servers respond.
+  * Listen on messages from the server, and show them to the user once the event is triggered.
 
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+## Examples
+Here are some examples on using class *Server* to communicate with the server.
+### Scenario \#1 - Sign In
 
-includes:
-  - errors
+> Sample code (Unity C#)
 
-search: true
----
+```csharp
+  public Text message;
+  public InputField usernameInput;
+  public InputField passwordInput;
 
-# Introduction
-
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
-
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
-
-# Authentication
-
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+  void SignInEventHandler(res, error) {
+    if (error) {
+      // handles error
+      message.text = "服务器错误";
+    } else {
+      if (res.approved == true)
+        SceneManager.LoadScene("Welcome");
+      else message.text = "用户名或密码错误";
+    }
   }
-]
+
+  void SignInButtonClicked() {
+    string username = usernameInput.text;
+    string password = passwordInput.text;
+    // TODO: validate user input
+
+    // send sign-in request to server
+    Server.SignIn(SignInEventHandler, username, password);
+  }
 ```
 
-This endpoint retrieves all kittens.
+Use method `Server.SignIn` to send a asynchronous sign-in request to server.
 
-### HTTP Request
+Parameter | Type | Description
+--------- | ---- | -----------
+handler  | void   | A function for handling the asynchronous response.
+username | string | The username of the user.<br>Should be a valid phone number with country code.<br>For example, if a Chinese user's phone number is 138xxxxxxxx then the string value should be `+86138xxxxxxxx`.
+<!-- password | string | The password of the user.<br>Should satisfy the following rules:<br><ul><li>a minimum of 6 characters required</li><li>no more than 15 characters</li><li>a-z, A-Z, 0-9 allowed</li><li>special characters allowed <code>~`!@#$%^&*()-_+=&#124;}]{["':;?/>.<,</code></li><li>white space allowed</li></ul> -->
 
-`GET http://example.com/api/kittens`
+#### Respond (parameters passed to the handler):
 
-### Query Parameters
+  * `bool approved`: if the sign-in request has been approved
+  * `string uid`: a unique ID for this user
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+#### Returns
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+  * void
 
-## Get a Specific Kitten
+### Scenario \#2 - Game State Listening
 
-```ruby
-require 'kittn'
+> Sample code (Unity C#)
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
+```csharp
+  public string uid = "QYcNR3JP2Jge0vrah9LFbX9KrmQ2";
+  public Text message;
+  public Text pot_size;
+
+  void GameStateHandler(res, error) {
+    if (error) {
+      // handles error
+      message.text = "服务器错误";
+    } else {
+      pot_size.text = (string)res.pot_size;
+      // TODO: more UI responses
+    }
+  }
+
+  void Start() {
+    // start listening on server game state
+    Server.ListenGameState(GameStateHandler, uid);
+  }
 ```
 
-```python
-import kittn
+When user is in game, the client should listen to database events, and the UI should
+respond to these events accordingly. Use `Server.ListenGameState` to listen.
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+Parameter | Type | Description
+--------- | ---- | -----------
+handler   | void | The handler of game events.<br>Triggered every time the server game state changed.
+uid       | string | The uid obtained on user sign-in.
 
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
+#### Respond (parameters passed to the handler):
 
-```javascript
-const kittn = require('kittn');
+  * `uint pot_size`: the size of the pot
+  * other information such as flop card value and current player id
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
+#### Returns:
 
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
+  * `bool status`: if the listener has been successfully started
