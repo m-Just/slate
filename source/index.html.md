@@ -2,12 +2,12 @@
 ## Introduction
 This class implements all data communication methods with server. We use [Firebase](https://firebase.google.cn/)
 as our backend provider.
-In this project, we provide full backend supports, and can make minor adjustment according to your frontend
-development needs. You should handle all UI events, sending request to server,
+In this project, we provide full backend supports, and can make some adjustments according to your frontend
+development needs. Our demands are for you to handle all UI events, send request to server,
 and respond to listened events, etc. For example:
 
   * Show a message to user if he typed any invalid character in password input field.
-  * Create UI buttons, add listeners to them and send corresponding request to server, then handle the servers respond.
+  * Create UI buttons, listen on click events and send corresponding requests to server, then handle the server's response.
   * Listen on messages from the server, and show them to the user once the event is triggered.
 
 ## Examples
@@ -50,7 +50,7 @@ handler  | void   | A function for handling the asynchronous response.
 username | string | The username of the user.<br>Should be a valid phone number with country code.<br>For example, if a Chinese user's phone number is 138xxxxxxxx then the string value should be `+86138xxxxxxxx`.
 password | string | The password of the user.<br>Should satisfy the following rules:<br><ul><li>a minimum of 6 characters required</li><li>no more than 15 characters</li><li>a-z, A-Z, 0-9 allowed</li><li>special characters allowed <code>~`!@#$%^&*()-_+=&#124;}]{["':;?/>.<,</code></li><li>white space allowed</li></ul>
 
-#### Responds (parameters passed to the handler):
+#### Response fields (parameters passed to the handler):
 
   * `bool approved`: if the sign-in request has been approved
   * `string uid`: a unique ID for this user
@@ -92,7 +92,7 @@ Parameter | Type | Description
 handler   | void | The handler of game events.<br>Triggered every time the server game state changed.
 uid       | string | The uid obtained on user sign-in.
 
-#### Responds (parameters passed to the handler):
+#### Response field (parameters passed to the handler):
 
   * `uint pot_size`: the size of the pot
   * other information such as flop card value and current player id
