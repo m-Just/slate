@@ -73,7 +73,7 @@ password | string | The password of the user.<br>Should satisfy the following ru
   * void
 
 <aside class="notice">
-The user's sign-in status is persistent. Only call `SignIn` again if `SignOut` has been called.
+The user's sign-in status is persistent. Only call <code>SignIn</code> again if <code>SignOut</code> has been called.
 </aside>
 
 ### Scenario \#2 - Game State Listening
