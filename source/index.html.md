@@ -3,7 +3,7 @@
 This class implements all data communication methods with server. We use [Firebase](https://firebase.google.cn/)
 as our backend provider.
 In this project, we provide full backend supports, and can make some adjustments according to your frontend
-development needs. Our demands are for you to handle all UI events, send request to server,
+development needs. We ask you to handle all UI events, send request to server,
 and respond to listened events, etc. For example:
 
   * Show a message to user if he typed any invalid character in password input field.
@@ -42,7 +42,7 @@ Here are some examples on using class *Server* to communicate with the server.
   }
 ```
 
-Use method `Server.SignIn` to send a asynchronous sign-in request to server.
+Use method `Server.SignIn` to send an asynchronous sign-in request to server.
 
 Parameter | Type | Description
 --------- | ---- | -----------
@@ -84,12 +84,12 @@ password | string | The password of the user.<br>Should satisfy the following ru
   }
 ```
 
-When user is in game, the client should listen to database events, and the UI should
+When user is in game, the client should listen to game events, and the UI should
 respond to these events accordingly. Use `Server.ListenGameState` to listen.
 
 Parameter | Type | Description
 --------- | ---- | -----------
-handler   | void | The handler of game events.<br>Triggered every time the server game state changed.
+handler   | void | The handler of game events.<br>Triggered every time the server game state changes.
 uid       | string | The uid obtained on user sign-in.
 
 #### Response field (parameters passed to the handler):
