@@ -84,8 +84,8 @@ password | string | The password of the user.<br>Should satisfy the following ru
   }
 ```
 
-When user is in game, the client should listen to game events, and the UI should
-respond to these events accordingly. Use `Server.ListenGameState` to listen.
+When user is in game, the client should listen to game events, which UI should
+respond to accordingly. Use `Server.ListenGameState` to listen.
 
 Parameter | Type | Description
 --------- | ---- | -----------
